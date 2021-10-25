@@ -1,0 +1,24 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## My First Leaflet Map
+library(leaflet)
+map <- leaflet() %>% addTiles()
+```
+
+##Create a marker with a picture of Taj Mahal and a link to its homepage.
+```{r}
+tajMahalIcon <- makeIcon(
+  iconUrl = "https://images.hindustantimes.com/rf/image_size_630x354/HT/p2/2020/09/21/Pictures/workers-spray-disinfection-at-taj-mahal-premises_c3a04cc0-fbb0-11ea-ac1a-6982f7a91a4b.jpg",
+  iconWidth = 30*408/255, iconHeight = 30,
+  iconAnchorX = 30*408/255/2, iconAnchorY = 30/2
+)
+```
+
+Add the marker to the map and display the map.
+```{r}
+tajMahalPopup <- c("<a href= 'https://en.wikipedia.org/wiki/Taj_Mahal' >Taj Mahal<br><img src='https://images.hindustantimes.com/rf/image_size_630x354/HT/p2/2020/09/21/Pictures/workers-spray-disinfection-at-taj-mahal-premises_c3a04cc0-fbb0-11ea-ac1a-6982f7a91a4b.jpg' width='210' height='132'  alt='Foto Corps de Logis' title='Foto Corps de Logi'></a>")
+map %>%
+  addTiles() %>%
+  addMarkers(lat=27.175125710940762, lng=78.04218511534143, popup = tajMahalPopup)
+```
